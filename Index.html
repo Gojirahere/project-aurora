@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Surprise ❤️</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#070B1A,#1B2A6B);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            color:white;
+            overflow:hidden;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(15px);
+            padding:40px;
+            border-radius:25px;
+            text-align:center;
+            width:90%;
+            max-width:500px;
+        }
+
+        h1{
+            font-size:40px;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:18px;
+            line-height:1.6;
+            margin-bottom:30px;
+        }
+
+        button{
+            padding:15px 35px;
+            border:none;
+            border-radius:50px;
+            background:#ff5ca8;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Hey ❤️</h1>
+
+    <p>
+        I made something for you.<br>
+        Not because I had to...<br>
+        But because I wanted to.
+    </p>
+
+    <button onclick="alert('Welcome to your surprise! ✨')">
+        Begin the Journey →
+    </button>
+</div>
+
+</body>
+</html>
