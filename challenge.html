@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Challenge ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#050816,#0b1333);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+}
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+p{
+font-size:18px;
+opacity:.8;
+margin-bottom:25px;
+text-align:center;
+}
+
+#counter{
+font-size:24px;
+margin-bottom:30px;
+font-weight:bold;
+}
+
+.heart{
+position:absolute;
+font-size:45px;
+cursor:pointer;
+animation:float 2.5s ease-in-out infinite;
+transition:.3s;
+user-select:none;
+}
+
+.heart:hover{
+transform:scale(1.25);
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+#giftBtn{
+display:none;
+padding:18px 40px;
+font-size:22px;
+border:none;
+border-radius:50px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+#giftBtn:hover{
+background:#ff6b8a;
+transform:scale(1.08);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>❤️ Mini Challenge</h1>
+
+<p>
+Find all 3 hidden hearts to unlock your birthday surprise.
+</p>
+
+<div id="counter">
+0 / 3 Hearts Found
+</div>
+
+<div class="heart" style="top:18%;left:12%;">❤️</div>
+
+<div class="heart" style="top:72%;left:80%;">❤️</div>
+
+<div class="heart" style="top:40%;left:55%;">❤️</div>
+
+<button id="giftBtn" onclick="window.location.href='gift.html'">
+🎁 Open Your Gift
+</button>
+
+<script>
+
+let found=0;
+
+document.querySelectorAll(".heart").forEach(function(heart){
+
+heart.onclick=function(){
+
+heart.style.display="none";
+
+found++;
+
+document.getElementById("counter").innerHTML=
+found+" / 3 Hearts Found";
+
+if(found==3){
+
+document.getElementById("giftBtn").style.display="block";
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
