@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Challenge ❤️</title>
+<title>Relationship Verification ❤️</title>
 
 <style>
 
@@ -11,71 +11,184 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#050816,#0b1333);
-height:100vh;
+background:linear-gradient(180deg,#050816,#0b1333,#151d3b);
+color:white;
 overflow:hidden;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-color:white;
+}
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+from{
+opacity:.2;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1.4);
+}
+}
+
+.container{
+
+width:90%;
+max-width:700px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+padding:35px;
+
+text-align:center;
+
+box-shadow:0 15px 40px rgba(0,0,0,.45);
+
 }
 
 h1{
-font-size:42px;
-margin-bottom:10px;
+
+font-size:38px;
+
+margin-bottom:15px;
+
 }
 
-p{
-font-size:18px;
+.subtitle{
+
 opacity:.8;
+
 margin-bottom:25px;
-text-align:center;
+
+line-height:1.7;
+
 }
 
-#counter{
-font-size:24px;
-margin-bottom:30px;
-font-weight:bold;
+.progress{
+
+width:100%;
+
+height:14px;
+
+background:#25304f;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin:25px 0;
+
 }
 
-.heart{
-position:absolute;
-font-size:45px;
-cursor:pointer;
-animation:float 2.5s ease-in-out infinite;
-transition:.3s;
-user-select:none;
+.progressFill{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#ff4d6d,#ff91a8);
+
+transition:.5s;
+
 }
 
-.heart:hover{
-transform:scale(1.25);
+#status{
+
+font-size:18px;
+
+margin-bottom:20px;
+
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
+.popup{
+
+position:fixed;
+
+top:25px;
+
+right:-320px;
+
+background:#1d2448;
+
+padding:18px 22px;
+
+border-radius:18px;
+
+transition:.5s;
+
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+
 }
 
-#giftBtn{
-display:none;
-padding:18px 40px;
-font-size:22px;
+.popup.show{
+
+right:20px;
+
+}
+
+button{
+
+margin-top:25px;
+
+padding:15px 35px;
+
+font-size:18px;
+
 border:none;
-border-radius:50px;
+
+border-radius:40px;
+
 background:#ff4d6d;
+
 color:white;
+
 cursor:pointer;
+
 transition:.3s;
+
 }
 
-#giftBtn:hover{
+button:hover{
+
+transform:scale(1.05);
+
 background:#ff6b8a;
-transform:scale(1.08);
+
+}
+
+#game{
+
+display:none;
+
+margin-top:20px;
+
 }
 
 </style>
@@ -84,52 +197,350 @@ transform:scale(1.08);
 
 <body>
 
-<h1>❤️ Mini Challenge</h1>
+<div class="stars" id="stars"></div>
 
-<p>
-Find all 3 hidden hearts to unlock your birthday surprise.
-</p>
+<div class="popup" id="popup">
 
-<div id="counter">
-0 / 3 Hearts Found
+🏆 Achievement Unlocked<br>
+
+<b>Relationship Verification Started</b>
+
 </div>
 
-<div class="heart" style="top:18%;left:12%;">❤️</div>
+<div class="container">
 
-<div class="heart" style="top:72%;left:80%;">❤️</div>
+<h1>❤️ Relationship Verification</h1>
 
-<div class="heart" style="top:40%;left:55%;">❤️</div>
+<p class="subtitle">
 
-<button id="giftBtn" onclick="window.location.href='gift.html'">
-🎁 Open Your Gift
+Before you unlock the surprise...
+
+Let's see how well you know me. ✨
+
+</p>
+
+<div class="progress">
+
+<div class="progressFill" id="progressFill"></div>
+
+</div>
+
+<div id="status">
+
+Verification Progress : 0%
+
+</div>
+
+<button onclick="startGame()">
+
+Start Verification ❤️
+
 </button>
+
+<div id="game">
+<div id="game">
+
+<div id="questionBox">
+
+<h2 id="question"></h2>
+
+<div id="answers"></div>
+
+</div>
+
+</div>
 
 <script>
 
-let found=0;
+// ==========================
+// QUIZ DATA
+// ==========================
 
-document.querySelectorAll(".heart").forEach(function(heart){
+const questions = [
 
-heart.onclick=function(){
+{
+question:"Which state am I from?",
+answers:["Punjab","Assam","Jammu & Kashmir","Delhi"],
+correct:2,
+achievement:"You Remember ❤️"
+},
 
-heart.style.display="none";
+{
+question:"What do I overthink the most?",
+answers:[
+"You",
+"Food",
+"Movies",
+"Nothing"
+],
+correct:0,
+achievement:"Mind Reader 🧠"
+},
 
-found++;
+{
+question:"What's the name of the website I'm making?",
+answers:[
+"Project Aurora",
+"Moonlight",
+"Starlight",
+"Galaxy"
+],
+correct:0,
+achievement:"Aurora Explorer 🌌"
+},
 
-document.getElementById("counter").innerHTML=
-found+" / 3 Hearts Found";
+{
+question:"What matters more to me?",
+answers:[
+"Money",
+"Effort",
+"Popularity",
+"Luck"
+],
+correct:1,
+achievement:"Heart Hacker ❤️"
+},
 
-if(found==3){
+{
+question:"Are you ready for your surprise?",
+answers:[
+"Absolutely ❤️",
+"No 😭",
+"Maybe",
+"I'll think"
+],
+correct:0,
+achievement:"Verification Complete 🎉"
+}
 
-document.getElementById("giftBtn").style.display="block";
+];
+
+let currentQuestion=0;
+let score=0;
+
+function startGame(){
+
+achievement("Relationship Verification Started ❤️");
+
+document.querySelector("button").style.display="none";
+
+document.getElementById("game").style.display="block";
+
+loadQuestion();
 
 }
 
-}
+function loadQuestion(){
+
+const q=questions[currentQuestion];
+
+document.getElementById("question").innerHTML=q.question;
+
+const answers=document.getElementById("answers");
+
+answers.innerHTML="";
+
+q.answers.forEach((answer,index)=>{
+
+const btn=document.createElement("button");
+
+btn.innerHTML=answer;
+
+btn.style.display="block";
+
+btn.style.width="100%";
+
+btn.style.margin="12px auto";
+
+btn.onclick=function(){
+
+checkAnswer(index);
+
+};
+
+answers.appendChild(btn);
 
 });
 
-</script>
+}
 
-</body>
-</html>
+function checkAnswer(choice){
+
+const q=questions[currentQuestion];
+
+if(choice===q.correct){
+
+score++;
+
+achievement(q.achievement);
+
+}
+
+currentQuestion++;
+
+const percent=(currentQuestion/questions.length)*100;
+
+document.getElementById("progressFill").style.width=percent+"%";
+
+document.getElementById("status").innerHTML=
+
+"Verification Progress : "+Math.floor(percent)+"%";
+
+if(currentQuestion<questions.length){
+
+setTimeout(loadQuestion,500);
+
+}else{
+
+finishQuiz();
+
+}
+
+}
+
+function finishQuiz(){
+
+document.getElementById("questionBox").innerHTML=`
+
+<h2>✨ Final Verification</h2>
+
+<p style="margin:20px 0;">
+Say something from your heart...
+</p>
+
+<input
+id="loveInput"
+placeholder="Type here..."
+style="width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:18px;
+margin-top:10px;">
+
+<br><br>
+
+<button onclick="unlockGift()">
+Unlock Surprise ❤️
+</button>
+
+`;
+
+}
+
+function unlockGift(){
+
+let msg=document.getElementById("loveInput").value.trim().toLowerCase();
+
+let questionBox=document.getElementById("questionBox");
+
+document.body.style.transition="1s";
+document.body.style.background="black";
+
+createHearts();
+
+if(msg.includes("love")){
+
+achievement("Soul Connection ❤️");
+
+questionBox.innerHTML=`
+
+<h1 style="font-size:60px;">❤️</h1>
+
+<h2>Access Granted</h2>
+
+<p style="margin:20px 0;font-size:20px;line-height:1.8;">
+
+That was all I needed to hear...
+
+❤️
+
+</p>
+
+`;
+
+}else{
+
+achievement("Heart Opened ❤️");
+
+questionBox.innerHTML=`
+
+<h1 style="font-size:60px;">✨</h1>
+
+<h2>Access Granted</h2>
+
+<p style="margin:20px 0;font-size:20px;line-height:1.8;">
+
+Whatever you wrote...
+
+It came from your heart.
+
+And that's enough for me.
+
+❤️
+
+</p>
+
+`;
+
+}
+
+setTimeout(function(){
+
+questionBox.innerHTML+=`
+
+<br>
+
+<button onclick="window.location.href='gift.html'">
+
+✨ Your Surprise Awaits...
+
+</button>
+
+`;
+
+},2500);
+
+}
+
+function createHearts(){
+
+for(let i=0;i<40;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top="110vh";
+
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+heart.style.pointerEvents="none";
+
+heart.style.transition="4s linear";
+
+heart.style.zIndex="9999";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+
+heart.style.top="-10vh";
+
+heart.style.opacity="0";
+
+},100);
+
+setTimeout(function(){
+
+heart.remove();
+
+},4500);
+
+}
+
+}
