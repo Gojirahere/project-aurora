@@ -316,6 +316,20 @@ achievement:"Verification Complete 🎉"
 
 let currentQuestion=0;
 let score=0;
+function achievement(text){
+
+const popup=document.getElementById("popup");
+
+popup.innerHTML="🏆 Achievement Unlocked<br><b>"+text+"</b>";
+
+popup.classList.add("show");
+
+setTimeout(function(){
+
+popup.classList.remove("show");
+
+},2500);
+
 
 function startGame(){
 
