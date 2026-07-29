@@ -7,49 +7,51 @@
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#050816;
-color:white;
-padding:30px;
+    background:#050816;
+    color:white;
+    padding:30px;
 }
 
 h1{
-text-align:center;
-margin-bottom:30px;
+    text-align:center;
+    margin-bottom:30px;
 }
 
 .gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
 .card{
-background:rgba(255,255,255,.08);
-border-radius:18px;
-overflow:hidden;
-transition:.3s;
+    background:rgba(255,255,255,0.08);
+    border-radius:18px;
+    overflow:hidden;
+    transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-8px);
+    transform:scale(1.03);
 }
 
 .card img{
-width:100%;
-height:250px;
-object-fit:cover;
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    display:block;
 }
 
 .caption{
-padding:15px;
-text-align:center;
+    padding:15px;
+    text-align:center;
+    font-size:18px;
 }
 </style>
 
@@ -62,18 +64,18 @@ text-align:center;
 <div class="gallery">
 
 <div class="card">
-<img src="images/IMG_20260728_104215_445.jpg" alt="Our Memory 1">
-<div class="caption">Memory 1</div>
+<img src="images/IMG_20260728_104215_445.jpg" alt="Memory 1">
+<div class="caption">❤️ Memory 1</div>
 </div>
 
 <div class="card">
-<img src="images/IMG_20260728_104214_066.jpg" alt="Our Memory 2">
-<div class="caption">Memory 2</div>
+<img src="images/IMG_20260728_104214_066.jpg" alt="Memory 2">
+<div class="caption">❤️ Memory 2</div>
 </div>
 
 <div class="card">
- <img src="images/IMG_20260728_104212_073.jpg" alt="Our Memory 3">
-<div class="caption">Memory 3</div>
+<img src="images/IMG_20260728_104212_073.jpg" alt="Memory 3">
+<div class="caption">❤️ Memory 3</div>
 </div>
 
 </div>
