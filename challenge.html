@@ -8,7 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+.heart{
+position:absolute;
+font-size:30px;
+cursor:pointer;
+z-index:100;
+ filter: drop-shadow(0 0 8px #ff69b4);
+user-select: none;
+animation:heartBeat 1.2s infinite;
+}
 
+@keyframes heartBeat{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.2);
+}
+}
 *{
 margin:0;
 padding:0;
