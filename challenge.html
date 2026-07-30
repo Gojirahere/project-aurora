@@ -308,7 +308,16 @@ const gameArea=document.getElementById("gameArea");
 const progressFill=document.getElementById("progressFill");
 
 const message=document.getElementById("message");
+const startBtn = document.getElementById("startBtn");
 
+startBtn.onclick = function () {
+
+    startBtn.style.display = "none";
+
+    message.innerHTML = "❤️ Find all 7 hidden hearts!";
+
+
+};
 let heartsFound=0;
 
 let wrongClicks=0;
