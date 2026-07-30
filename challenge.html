@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relationship Verification ❤️</title>
+<title>Aurora Challenge</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -11,53 +13,83 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Fredoka',sans-serif;
 }
 
 body{
-background:linear-gradient(180deg,#050816,#0b1333,#151d3b);
-color:white;
-overflow:hidden;
+
+background:
+linear-gradient(180deg,#050816,#101d45,#1a1044);
+
 height:100vh;
+
+overflow:hidden;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
+color:white;
+
 }
 
-.stars{
+#stars{
+
 position:fixed;
-width:100%;
-height:100%;
+
+inset:0;
+
 overflow:hidden;
-top:0;
-left:0;
-z-index:-1;
+
+z-index:-2;
+
 }
 
 .star{
+
 position:absolute;
+
 width:3px;
+
 height:3px;
+
 background:white;
+
 border-radius:50%;
-animation:twinkle 3s infinite alternate;
+
+animation:twinkle 2.5s infinite alternate;
+
 }
 
 @keyframes twinkle{
+
 from{
+
 opacity:.2;
-transform:scale(.8);
+
+transform:scale(.7);
+
 }
+
 to{
+
 opacity:1;
-transform:scale(1.4);
+
+transform:scale(1.5);
+
 }
+
 }
 
 .container{
 
-width:90%;
+width:92%;
+
 max-width:700px;
+
+padding:30px;
 
 background:rgba(255,255,255,.08);
 
@@ -65,29 +97,29 @@ backdrop-filter:blur(18px);
 
 border-radius:25px;
 
-padding:35px;
+border:1px solid rgba(255,255,255,.15);
 
 text-align:center;
 
-box-shadow:0 15px 40px rgba(0,0,0,.45);
+box-shadow:0 0 40px rgba(255,255,255,.08);
 
 }
 
 h1{
 
-font-size:38px;
+font-size:42px;
 
-margin-bottom:15px;
+margin-bottom:10px;
 
 }
 
-.subtitle{
+p{
 
-opacity:.8;
+opacity:.85;
 
-margin-bottom:25px;
+margin-bottom:20px;
 
-line-height:1.7;
+line-height:1.6;
 
 }
 
@@ -97,13 +129,13 @@ width:100%;
 
 height:14px;
 
-background:#25304f;
+background:#28345d;
 
-border-radius:20px;
+border-radius:50px;
 
 overflow:hidden;
 
-margin:25px 0;
+margin-bottom:25px;
 
 }
 
@@ -113,59 +145,83 @@ width:0%;
 
 height:100%;
 
-background:linear-gradient(90deg,#ff4d6d,#ff91a8);
+background:linear-gradient(90deg,#ff5d9e,#ffb5d5);
 
-transition:.5s;
-
-}
-
-#status{
-
-font-size:18px;
-
-margin-bottom:20px;
+transition:.4s;
 
 }
 
-.popup{
+#gameArea{
 
-position:fixed;
+position:relative;
 
-top:25px;
+width:100%;
 
-right:-320px;
+height:330px;
 
-background:#1d2448;
+background:rgba(255,255,255,.05);
 
-padding:18px 22px;
+border-radius:20px;
 
-border-radius:18px;
-
-transition:.5s;
-
-box-shadow:0 10px 25px rgba(0,0,0,.4);
+overflow:hidden;
 
 }
 
-.popup.show{
+.pet{
+
+position:absolute;
+
+font-size:52px;
+
+cursor:pointer;
+
+user-select:none;
+
+transition:.3s;
+
+}
+
+#cat{
+
+left:20px;
+
+bottom:20px;
+
+}
+
+#dog{
 
 right:20px;
+
+bottom:20px;
+
+}
+
+#message{
+
+margin-top:20px;
+
+font-size:20px;
+
+color:#ffd5ea;
+
+min-height:30px;
 
 }
 
 button{
 
-margin-top:25px;
+margin-top:20px;
 
 padding:15px 35px;
 
-font-size:18px;
-
 border:none;
 
-border-radius:40px;
+border-radius:50px;
 
-background:#ff4d6d;
+font-size:18px;
+
+background:#ff4d8d;
 
 color:white;
 
@@ -179,16 +235,6 @@ button:hover{
 
 transform:scale(1.05);
 
-background:#ff6b8a;
-
-}
-
-#game{
-
-display:none;
-
-margin-top:20px;
-
 }
 
 </style>
@@ -197,26 +243,14 @@ margin-top:20px;
 
 <body>
 
-<div class="stars" id="stars"></div>
-
-<div class="popup" id="popup">
-
-🏆 Achievement Unlocked<br>
-
-<b>Relationship Verification Started</b>
-
-</div>
+<div id="stars"></div>
 
 <div class="container">
 
-<h1>❤️ Relationship Verification</h1>
+<h1>❤️ Aurora Challenge</h1>
 
-<p class="subtitle">
-
-Before you unlock the surprise...
-
-Let's see how well you know me. ✨
-
+<p>
+Find all 7 hidden hearts... if you can. 😈
 </p>
 
 <div class="progress">
@@ -225,135 +259,482 @@ Let's see how well you know me. ✨
 
 </div>
 
-<div id="status">
+<div id="gameArea">
 
-Verification Progress : 0%
+<div id="cat" class="pet">🐱</div>
+
+<div id="dog" class="pet">🐶</div>
 
 </div>
 
-<button onclick="startGame()">
+<div id="message">
 
-Start Verification ❤️
+Press Begin Mission ❤️
+
+</div>
+
+<button id="startBtn">
+
+Begin Mission ❤️
 
 </button>
-
-<div id="game">
-
-<div id="questionBox">
-
-<h2 id="question"></h2>
-
-<div id="answers"></div>
-
-</div>
 
 </div>
 
 <script>
+// ===============================
+// HEART HUNT SYSTEM
+// ===============================
 
-// ==========================
-// QUIZ DATA
-// ==========================
+const gameArea=document.getElementById("gameArea");
 
-const questions = [
+const progressFill=document.getElementById("progressFill");
+
+const message=document.getElementById("message");
+
+let heartsFound=0;
+
+let wrongClicks=0;
+
+const funnyMessages=[
+
+"😂 Nope...",
+
+"Bro... even I'm confused 😭",
+
+"Keep looking detective 🕵️",
+
+"The heart is laughing at you ❤️",
+
+"So close... maybe not 😏",
+
+"Try again 😂"
+
+];
+
+const heartLocations=[
+
+{top:25,left:18},
+
+{top:70,left:80},
+
+{top:15,left:60},
+
+{top:55,left:40}
+
+];
+
+// Create first 4 hearts
+
+heartLocations.forEach((pos,index)=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.top=pos.top+"%";
+
+heart.style.left=pos.left+"%";
+
+heart.style.display="none";
+
+heart.dataset.id=index;
+
+heart.onclick=function(e){
+
+e.stopPropagation();
+
+collectHeart(heart);
+
+};
+
+gameArea.appendChild(heart);
+
+});
+
+// Show first heart after clicking Begin Mission
+
+document.getElementById("startBtn").onclick=function(){
+
+this.style.display="none";
+
+message.innerHTML="Find the first hidden heart ❤️";
+
+document.querySelector(".heart").style.display="block";
+
+};
+
+// Collect Heart
+
+function collectHeart(heart){
+
+heart.remove();
+
+heartsFound++;
+
+progressFill.style.width=(heartsFound/7)*100+"%";
+
+message.innerHTML="❤️ Memory Found! ("+heartsFound+"/7)";
+
+if(heartsFound<4){
+
+const next=document.querySelectorAll(".heart")[0];
+
+if(next) next.style.display="block";
+
+}
+
+// Special hearts come later
+
+if(heartsFound===4){
+
+message.innerHTML="🐱 Hmm... maybe the cat knows something...";
+
+}
+
+}
+
+// Wrong clicks
+
+gameArea.onclick=function(){
+
+wrongClicks++;
+
+message.innerHTML=
+
+funnyMessages[Math.floor(Math.random()*funnyMessages.length)];
+
+};
+  // ===============================
+// CAT & DOG + SECRET HEARTS
+// ===============================
+
+const cat=document.getElementById("cat");
+const dog=document.getElementById("dog");
+
+// Funny messages
+
+const catMessages=[
+"😼 Meow... Nope.",
+"🐱 I think I saw something near the moon...",
+"😴 I'm too sleepy to help.",
+"❤️ Meow! You found a memory!"
+];
+
+const dogMessages=[
+"🐶 Woof! Keep searching!",
+"🦴 I buried something nearby!",
+"🐾 Follow the stars!",
+"❤️ Woof! Nice job!"
+];
+
+// Move cat every 4 seconds
+
+setInterval(function(){
+
+cat.style.left=(20+Math.random()*75)+"%";
+cat.style.top=(20+Math.random()*65)+"%";
+
+},4000);
+
+// Move dog every 3 seconds
+
+setInterval(function(){
+
+dog.style.left=(20+Math.random()*75)+"%";
+dog.style.top=(20+Math.random()*65)+"%";
+
+},3000);
+
+// Cat click
+
+cat.onclick=function(e){
+
+e.stopPropagation();
+
+message.innerHTML=
+
+catMessages[Math.floor(Math.random()*catMessages.length)];
+
+if(heartsFound===4){
+
+spawnHeart(cat.offsetLeft+20,cat.offsetTop-20);
+
+}
+
+};
+
+// Dog click
+
+dog.onclick=function(e){
+
+e.stopPropagation();
+
+message.innerHTML=
+
+dogMessages[Math.floor(Math.random()*dogMessages.length)];
+
+if(heartsFound===5){
+
+spawnHeart(dog.offsetLeft+20,dog.offsetTop-20);
+
+}
+
+};
+
+// Spawn secret heart
+
+function spawnHeart(x,y){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=x+"px";
+
+heart.style.top=y+"px";
+
+heart.onclick=function(e){
+
+e.stopPropagation();
+
+heart.remove();
+
+heartsFound++;
+
+progressFill.style.width=(heartsFound/7)*100+"%";
+
+message.innerHTML="❤️ Secret Memory Found! ("+heartsFound+"/7)";
+
+if(heartsFound===7){
+
+finishHeartGame();
+
+}
+
+};
+
+gameArea.appendChild(heart);
+
+}
+
+// Fake disappearing heart
+
+setTimeout(function(){
+
+let fake=document.createElement("div");
+
+fake.className="heart";
+
+fake.innerHTML="💖";
+
+fake.style.left="60%";
+
+fake.style.top="30%";
+
+fake.onclick=function(){
+
+message.innerHTML="😂 Oops! That one was fake!";
+
+fake.remove();
+
+};
+
+gameArea.appendChild(fake);
+
+setTimeout(function(){
+
+if(fake.parentNode){
+
+fake.remove();
+
+}
+
+},4000);
+
+},12000);
+
+// Finish
+
+function finishHeartGame(){
+
+message.innerHTML="🎉 You found every hidden memory!";
+
+let yay=document.getElementById("yay");
+
+yay.style.display="block";
+
+setTimeout(function(){
+
+message.innerHTML="❤️ Relationship Quiz unlocked...";
+
+},2500);
+
+}
+// ===============================
+// MOON + SHOOTING STAR
+// ===============================
+
+// Create Moon
+
+const moon=document.createElement("div");
+
+moon.innerHTML="🌙";
+
+moon.style.position="absolute";
+moon.style.top="20px";
+moon.style.right="30px";
+moon.style.fontSize="55px";
+moon.style.cursor="pointer";
+
+gameArea.appendChild(moon);
+
+// Moon click
+
+moon.onclick=function(e){
+
+e.stopPropagation();
+
+message.innerHTML="🌙 Something sparkles behind the moon...";
+
+if(heartsFound===6){
+
+spawnHeart(
+moon.offsetLeft+15,
+moon.offsetTop+20
+);
+
+}
+
+};
+
+// Shooting Star
+
+const shooting=document.createElement("div");
+
+shooting.innerHTML="⭐";
+
+shooting.style.position="absolute";
+shooting.style.left="-60px";
+shooting.style.top="70px";
+shooting.style.fontSize="28px";
+
+gameArea.appendChild(shooting);
+
+function shootingStar(){
+
+shooting.style.left="-60px";
+
+let x=-60;
+
+const fly=setInterval(function(){
+
+x+=8;
+
+shooting.style.left=x+"px";
+
+if(x>800){
+
+clearInterval(fly);
+
+}
+
+},20);
+
+}
+
+setInterval(shootingStar,9000);
+
+// Secret heart after many wrong clicks
+
+setInterval(function(){
+
+if(wrongClicks>=10 && heartsFound<7){
+
+spawnHeart(220,120);
+
+wrongClicks=0;
+
+message.innerHTML="✨ A hidden memory appeared!";
+
+}
+
+},1000);
+// ===============================
+// RELATIONSHIP QUIZ
+// ===============================
+
+const quiz=[
 
 {
-question:"Which state am I from?",
-answers:["Punjab","Assam","Jammu & Kashmir","Delhi"],
-correct:2,
-achievement:"You Remember ❤️"
+q:"What's my favourite person? ❤️",
+a:["My Mom","You 😌","My Friend","Pizza"],
+correct:1
 },
 
 {
-question:"What do I overthink the most?",
-answers:[
-"You",
-"Food",
-"Movies",
-"Nothing"
-],
-correct:0,
-achievement:"Mind Reader 🧠"
+q:"If I'm sad, what should you do?",
+a:["Ignore me 😭","Send memes 😂","Talk to me ❤️","Steal my food"],
+correct:2
 },
 
 {
-question:"What's the name of the website I'm making?",
-answers:[
-"Project Aurora",
-"Moonlight",
-"Starlight",
-"Galaxy"
-],
-correct:0,
-achievement:"Aurora Explorer 🌌"
+q:"Who's the cutest?",
+a:["Me 😌","You ❤️","The Cat 🐱","The Dog 🐶"],
+correct:1
 },
 
 {
-question:"What matters more to me?",
-answers:[
-"Money",
-"Effort",
-"Popularity",
-"Luck"
-],
-correct:1,
-achievement:"Heart Hacker ❤️"
+q:"What's stronger than WiFi?",
+a:["Love ❤️","Bluetooth","5G","Nothing"],
+correct:0
 },
 
 {
-question:"Are you ready for your surprise?",
-answers:[
-"Absolutely ❤️",
-"No 😭",
-"Maybe",
-"I'll think"
-],
-correct:0,
-achievement:"Verification Complete 🎉"
+q:"Mission Complete?",
+a:["Not Yet","Almost","YESSS!! ❤️","Never"],
+correct:2
 }
 
 ];
 
-let currentQuestion=0;
-let score=0;
-function achievement(text){
+let quizIndex=0;
 
-const popup=document.getElementById("popup");
+function startQuiz(){
 
-popup.innerHTML="🏆 Achievement Unlocked<br><b>"+text+"</b>";
+gameArea.innerHTML="";
 
-popup.classList.add("show");
-
-setTimeout(function(){
-
-popup.classList.remove("show");
-
-},2500);
-
-
-function startGame(){
-
-achievement("Relationship Verification Started ❤️");
-
-document.querySelector("button").style.display="none";
-
-document.getElementById("game").style.display="block";
-
-loadQuestion();
+showQuestion();
 
 }
 
-function loadQuestion(){
+function showQuestion(){
 
-const q=questions[currentQuestion];
+if(quizIndex>=quiz.length){
 
-document.getElementById("question").innerHTML=q.question;
+quizFinished();
 
-const answers=document.getElementById("answers");
+return;
 
-answers.innerHTML="";
+}
 
-q.answers.forEach((answer,index)=>{
+const data=quiz[quizIndex];
+
+gameArea.innerHTML="";
+
+const title=document.createElement("h2");
+
+title.innerHTML=data.q;
+
+title.style.marginTop="20px";
+
+gameArea.appendChild(title);
+
+data.a.forEach((answer,index)=>{
 
 const btn=document.createElement("button");
 
@@ -361,199 +742,165 @@ btn.innerHTML=answer;
 
 btn.style.display="block";
 
-btn.style.width="100%";
-
-btn.style.margin="12px auto";
+btn.style.margin="15px auto";
 
 btn.onclick=function(){
 
-checkAnswer(index);
+if(index===data.correct){
+
+message.innerHTML="✅ Correct!";
+
+quizIndex++;
+
+setTimeout(showQuestion,700);
+
+}else{
+
+message.innerHTML="😂 Nope! Try again.";
+
+}
 
 };
 
-answers.appendChild(btn);
+gameArea.appendChild(btn);
 
 });
 
 }
 
-function checkAnswer(choice){
+function quizFinished(){
 
-const q=questions[currentQuestion];
+gameArea.innerHTML="";
 
-if(choice===q.correct){
+message.innerHTML="🎉 Relationship Verification Passed!";
 
-score++;
+const btn=document.createElement("button");
 
-achievement(q.achievement);
+btn.innerHTML="Continue ❤️";
 
-}
+btn.onclick=function(){
 
-currentQuestion++;
+window.location.href="gift.html";
 
-const percent=(currentQuestion/questions.length)*100;
+};
 
-document.getElementById("progressFill").style.width=percent+"%";
-
-document.getElementById("status").innerHTML=
-
-"Verification Progress : "+Math.floor(percent)+"%";
-
-if(currentQuestion<questions.length){
-
-setTimeout(loadQuestion,500);
-
-}else{
-
-finishQuiz();
+gameArea.appendChild(btn);
 
 }
+  // ===============================
+// FINAL EFFECTS
+// ===============================
 
-}
+// Achievement popup
 
-function finishQuiz(){
+function achievement(text){
 
-document.getElementById("questionBox").innerHTML=`
+const pop=document.createElement("div");
 
-<h2>✨ Final Verification</h2>
+pop.innerHTML="🏆 "+text;
 
-<p style="margin:20px 0;">
-Say something from your heart...
-</p>
+pop.style.position="fixed";
+pop.style.top="30px";
+pop.style.left="50%";
+pop.style.transform="translateX(-50%)";
 
-<input
-id="loveInput"
-placeholder="Type here..."
-style="width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-font-size:18px;
-margin-top:10px;">
+pop.style.background="#ff4d8d";
+pop.style.color="white";
+pop.style.padding="15px 25px";
+pop.style.borderRadius="40px";
+pop.style.fontSize="20px";
+pop.style.boxShadow="0 0 25px pink";
+pop.style.zIndex="9999";
 
-<br><br>
-
-<button onclick="unlockGift()">
-Unlock Surprise ❤️
-</button>
-
-`;
-
-}
-
-function unlockGift(){
-
-let msg=document.getElementById("loveInput").value.trim().toLowerCase();
-
-let questionBox=document.getElementById("questionBox");
-
-document.body.style.transition="1s";
-document.body.style.background="black";
-
-createHearts();
-
-if(msg.includes("love")){
-
-achievement("Soul Connection ❤️");
-
-questionBox.innerHTML=`
-
-<h1 style="font-size:60px;">❤️</h1>
-
-<h2>Access Granted</h2>
-
-<p style="margin:20px 0;font-size:20px;line-height:1.8;">
-
-That was all I needed to hear...
-
-❤️
-
-</p>
-
-`;
-
-}else{
-
-achievement("Heart Opened ❤️");
-
-questionBox.innerHTML=`
-
-<h1 style="font-size:60px;">✨</h1>
-
-<h2>Access Granted</h2>
-
-<p style="margin:20px 0;font-size:20px;line-height:1.8;">
-
-Whatever you wrote...
-
-It came from your heart.
-
-And that's enough for me.
-
-❤️
-
-</p>
-
-`;
-
-}
+document.body.appendChild(pop);
 
 setTimeout(function(){
 
-questionBox.innerHTML+=`
+pop.remove();
 
-<br>
-
-<button onclick="window.location.href='gift.html'">
-
-✨ Your Surprise Awaits...
-
-</button>
-
-`;
-
-},2500);
+},2200);
 
 }
 
-function createHearts(){
+// Simple confetti
 
-for(let i=0;i<40;i++){
+function confetti(){
 
-let heart=document.createElement("div");
+for(let i=0;i<60;i++){
 
-heart.innerHTML="❤️";
+let c=document.createElement("div");
 
-heart.style.position="fixed";
+c.innerHTML="🎉";
 
-heart.style.left=Math.random()*100+"vw";
+c.style.position="fixed";
 
-heart.style.top="110vh";
+c.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=(20+Math.random()*25)+"px";
+c.style.top="-40px";
 
-heart.style.pointerEvents="none";
+c.style.fontSize=(18+Math.random()*18)+"px";
 
-heart.style.transition="4s linear";
+c.style.transition="4s linear";
 
-heart.style.zIndex="9999";
-
-document.body.appendChild(heart);
+document.body.appendChild(c);
 
 setTimeout(function(){
 
-heart.style.top="-10vh";
+c.style.top="110vh";
+c.style.transform="rotate(720deg)";
 
-heart.style.opacity="0";
-
-},100);
+},30);
 
 setTimeout(function(){
 
-heart.remove();
+c.remove();
 
 },4500);
 
 }
 
 }
+
+// Small screen shake
+
+function shake(){
+
+document.body.animate([
+
+{transform:"translateX(0px)"},
+{transform:"translateX(-6px)"},
+{transform:"translateX(6px)"},
+{transform:"translateX(-6px)"},
+{transform:"translateX(0px)"}
+
+],{
+
+duration:350
+
+});
+
+}
+
+// Upgrade quiz ending
+
+const oldQuizFinished = quizFinished;
+
+quizFinished = function(){
+
+confetti();
+
+shake();
+
+achievement("Relationship Master ❤️");
+
+document.getElementById("yay").style.display="block";
+
+setTimeout(function(){
+
+oldQuizFinished();
+
+},1800);
+
+};
+<script>
+  
