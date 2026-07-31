@@ -1,46 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Challenge</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Girlfriend's Day ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-.heart{
-position:absolute;
-font-size:30px;
-cursor:pointer;
-z-index:100;
- filter: drop-shadow(0 0 8px #ff69b4);
-user-select: none;
-animation:heartBeat 1.2s infinite;
-}
+ /* ===========================
+   RESET
+=========================== */
 
-@keyframes heartBeat{
-0%,100%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.2);
-}
-}
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Fredoka',sans-serif;
 }
 
 body{
 
-background:
-linear-gradient(180deg,#050816,#101d45,#1a1044);
+font-family:'Fredoka',sans-serif;
 
 height:100vh;
 
 overflow:hidden;
+
+background:linear-gradient(180deg,#050816,#09122b,#140b26);
 
 display:flex;
 
@@ -52,15 +41,25 @@ color:white;
 
 }
 
+/* ===========================
+   STARS
+=========================== */
+
 #stars{
 
 position:fixed;
 
-inset:0;
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
 
 overflow:hidden;
 
-z-index:-2;
+z-index:0;
 
 }
 
@@ -76,47 +75,165 @@ background:white;
 
 border-radius:50%;
 
-animation:twinkle 2.5s infinite alternate;
+animation:twinkle 3s infinite;
+
+box-shadow:0 0 10px white;
 
 }
 
 @keyframes twinkle{
 
-from{
+0%,100%{
 
 opacity:.2;
 
-transform:scale(.7);
+transform:scale(.8);
 
 }
 
-to{
+50%{
 
 opacity:1;
 
-transform:scale(1.5);
+transform:scale(1.8);
 
 }
 
 }
+
+/* ===========================
+   FLOATING HEARTS
+=========================== */
+
+#floatingHearts{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:1;
+
+}
+
+.floatHeart{
+
+position:absolute;
+
+font-size:22px;
+
+animation:floatHeart linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes floatHeart{
+
+0%{
+
+transform:translateY(110vh) scale(.7);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(1.2);
+
+opacity:0;
+
+}
+
+}
+
+/* ===========================
+   MOON
+=========================== */
+
+.moon{
+
+position:absolute;
+
+top:50px;
+
+right:70px;
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:#fff7d6;
+
+box-shadow:
+
+0 0 20px white,
+
+0 0 50px #fff9b0,
+
+0 0 90px white;
+
+animation:moonGlow 4s infinite;
+
+z-index:2;
+
+}
+
+@keyframes moonGlow{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* ===========================
+   MAIN CONTAINER
+=========================== */
 
 .container{
 
-width:92%;
+position:relative;
+
+z-index:5;
+
+text-align:center;
+
+width:90%;
 
 max-width:700px;
 
-padding:30px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(18px);
+padding:40px;
 
 border-radius:25px;
 
-border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.05);
 
-text-align:center;
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.12);
 
 box-shadow:0 0 40px rgba(255,255,255,.08);
 
@@ -124,121 +241,65 @@ box-shadow:0 0 40px rgba(255,255,255,.08);
 
 h1{
 
-font-size:42px;
+font-size:3rem;
 
-margin-bottom:10px;
+color:#ff8ac6;
 
-}
+text-shadow:
 
-p{
+0 0 10px #ff8ac6,
 
-opacity:.85;
+0 0 25px hotpink;
 
-margin-bottom:20px;
-
-line-height:1.6;
+animation:titleFloat 3s infinite;
 
 }
 
-.progress{
+@keyframes titleFloat{
 
-width:100%;
+0%,100%{
 
-height:14px;
-
-background:#28345d;
-
-border-radius:50px;
-
-overflow:hidden;
-
-margin-bottom:25px;
+transform:translateY(0);
 
 }
 
-.progressFill{
+50%{
 
-width:0%;
-
-height:100%;
-
-background:linear-gradient(90deg,#ff5d9e,#ffb5d5);
-
-transition:.4s;
+transform:translateY(-8px);
 
 }
 
-#gameArea{
+}
 
-position:relative;
+.subtitle{
 
-width:100%;
+margin-top:15px;
 
-height:330px;
+font-size:1.2rem;
 
-background:rgba(255,255,255,.05);
-
-border-radius:20px;
-
-overflow:hidden;
+color:#ddd;
 
 }
 
-.pet{
+/* ===========================
+   BUTTON
+=========================== */
 
-position:absolute;
+#startBtn{
 
-font-size:52px;
+margin-top:35px;
 
-cursor:pointer;
-
-user-select:none;
-
-transition:.3s;
-
-}
-
-#cat{
-
-left:20px;
-
-bottom:20px;
-
-}
-
-#dog{
-
-right:20px;
-
-bottom:20px;
-
-}
-
-#message{
-
-margin-top:20px;
+padding:16px 40px;
 
 font-size:20px;
 
-color:#ffd5ea;
-
-min-height:30px;
-
-}
-
-button{
-
-margin-top:20px;
-
-padding:15px 35px;
+font-family:'Fredoka',sans-serif;
 
 border:none;
 
 border-radius:50px;
 
-font-size:18px;
-
-background:#ff4d8d;
+background:linear-gradient(90deg,#ff4f95,#ff79c6);
 
 color:white;
 
@@ -246,687 +307,159 @@ cursor:pointer;
 
 transition:.3s;
 
-}
-
-button:hover{
-
-transform:scale(1.05);
+box-shadow:0 0 25px hotpink;
 
 }
 
-</style>
+#startBtn:hover{
 
-</head>
+transform:scale(1.08);
+
+box-shadow:0 0 45px hotpink;
+
+}
+
+/* ===========================
+   GAME AREA
+=========================== */
+
+#gameArea{
+
+margin-top:35px;
+
+}
+
+#progress{
+
+width:100%;
+
+height:16px;
+
+background:#333;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-bottom:20px;
+
+}
+
+#progressFill{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#ff5ca8,#ffb3d9);
+
+transition:.5s;
+
+}
+
+#message{
+
+font-size:22px;
+
+color:#fff;
+
+min-height:50px;
+
+}
+ </style>
+
+ </head>
 
 <body>
 
 <div id="stars"></div>
 
+<div id="floatingHearts"></div>
+
+<div class="moon"></div>
+
 <div class="container">
 
-<h1>❤️ Aurora Challenge</h1>
+<h1>Happy Girlfriend's Day ❤️</h1>
 
-<p>
-Find all 7 hidden hearts... if you can. 😈
+<p class="subtitle">
+I made a tiny adventure just for you...
 </p>
 
-<div class="progress">
-
-<div class="progressFill" id="progressFill"></div>
-
-</div>
+<button id="startBtn">
+Begin Mission ❤️
+</button>
 
 <div id="gameArea">
 
-<div id="cat" class="pet">🐱</div>
-
-<div id="dog" class="pet">🐶</div>
-
+<div id="progress">
+<div id="progressFill"></div>
 </div>
 
 <div id="message">
-
 Press Begin Mission ❤️
-
 </div>
 
-<button id="startBtn">
-
-Begin Mission ❤️
-
-</button>
+</div>
 
 </div>
 
 <script>
-// ===============================
-// HEART HUNT SYSTEM
-// ===============================
 
-const gameArea=document.getElementById("gameArea");
+// ===== CREATE STARS =====
 
-const progressFill=document.getElementById("progressFill");
+const stars=document.getElementById("stars");
 
-const message=document.getElementById("message");
-const startBtn = document.getElementById("startBtn");
+for(let i=0;i<220;i++){
 
-startBtn.onclick = function () {
+let star=document.createElement("div");
 
-    startBtn.style.display = "none";
+star.className="star";
 
-    message.innerHTML = "❤️ Find all 7 hidden hearts!";
-spawnHearts();
+star.style.left=Math.random()*100+"vw";
 
-};
-let heartsFound=0;
+star.style.top=Math.random()*100+"vh";
 
-let wrongClicks=0;
+star.style.animationDelay=Math.random()*3+"s";
 
-const funnyMessages=[
+star.style.animationDuration=(2+Math.random()*3)+"s";
 
-"😂 Nope...",
+stars.appendChild(star);
 
-"Bro... even I'm confused 😭",
+}
 
-"Keep looking detective 🕵️",
+// ===== FLOATING HEARTS =====
 
-"The heart is laughing at you ❤️",
+const floating=document.getElementById("floatingHearts");
 
-"So close... maybe not 😏",
-
-"Try again 😂"
-
-];
-
-const heartLocations=[
-
-{top:25,left:18},
-
-{top:70,left:80},
-
-{top:15,left:60},
-
-{top:55,left:40}
-
-];
-
-// Create first 4 hearts
-
-heartLocations.forEach((pos,index)=>{
+function createFloatingHeart(){
 
 let heart=document.createElement("div");
 
-heart.className="heart";
+heart.className="floatHeart";
 
 heart.innerHTML="❤️";
 
-heart.style.top=pos.top+"%";
+heart.style.left=Math.random()*100+"vw";
 
-heart.style.left=pos.left+"%";
+heart.style.animationDuration=(6+Math.random()*6)+"s";
 
-heart.style.display="none";
+heart.style.fontSize=(18+Math.random()*22)+"px";
 
-heart.dataset.id=index;
+floating.appendChild(heart);
 
-heart.onclick=function(e){
-
-e.stopPropagation();
-
-collectHeart(heart);
-
-};
-
-gameArea.appendChild(heart);
-
-});
-
-// Show first heart after clicking Begin Mission
-
-document.getElementById("startBtn").onclick=function(){
-
-this.style.display="none";
-
-message.innerHTML="Find the first hidden heart ❤️";
-
-document.querySelector(".heart").style.display="block";
-
-};
-
-// Collect Heart
-
-function collectHeart(heart){
+setTimeout(()=>{
 
 heart.remove();
-
-heartsFound++;
-
-progressFill.style.width=(heartsFound/7)*100+"%";
-
-message.innerHTML="❤️ Memory Found! ("+heartsFound+"/7)";
-
-if(heartsFound<4){
-
-const next=document.querySelectorAll(".heart")[0];
-
-if(next) next.style.display="block";
-
-}
-
-// Special hearts come later
-
-if(heartsFound===4){
-
-message.innerHTML="🐱 Hmm... maybe the cat knows something...";
-
-}
-
-}
-
-// Wrong clicks
-
-gameArea.onclick=function(){
-
-wrongClicks++;
-
-message.innerHTML=
-
-funnyMessages[Math.floor(Math.random()*funnyMessages.length)];
-
-};
-  // ===============================
-// CAT & DOG + SECRET HEARTS
-// ===============================
-
-const cat=document.getElementById("cat");
-const dog=document.getElementById("dog");
-
-// Funny messages
-
-const catMessages=[
-"😼 Meow... Nope.",
-"🐱 I think I saw something near the moon...",
-"😴 I'm too sleepy to help.",
-"❤️ Meow! You found a memory!"
-];
-
-const dogMessages=[
-"🐶 Woof! Keep searching!",
-"🦴 I buried something nearby!",
-"🐾 Follow the stars!",
-"❤️ Woof! Nice job!"
-];
-
-// Move cat every 4 seconds
-
-setInterval(function(){
-
-cat.style.left=(20+Math.random()*75)+"%";
-cat.style.top=(20+Math.random()*65)+"%";
-
-},4000);
-
-// Move dog every 3 seconds
-
-setInterval(function(){
-
-dog.style.left=(20+Math.random()*75)+"%";
-dog.style.top=(20+Math.random()*65)+"%";
-
-},3000);
-
-// Cat click
-
-cat.onclick=function(e){
-
-e.stopPropagation();
-
-message.innerHTML=
-
-catMessages[Math.floor(Math.random()*catMessages.length)];
-
-if(heartsFound===4){
-
-spawnHeart(cat.offsetLeft+20,cat.offsetTop-20);
-
-}
-
-};
-
-// Dog click
-
-dog.onclick=function(e){
-
-e.stopPropagation();
-
-message.innerHTML=
-
-dogMessages[Math.floor(Math.random()*dogMessages.length)];
-
-if(heartsFound===5){
-
-spawnHeart(dog.offsetLeft+20,dog.offsetTop-20);
-
-}
-
-};
-
-// Spawn secret heart
-
-function spawnHeart(x,y){
-
-let heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="❤️";
-
-heart.style.left=x+"px";
-
-heart.style.top=y+"px";
-
-heart.onclick=function(e){
-
-e.stopPropagation();
-
-heart.remove();
-
-heartsFound++;
-
-progressFill.style.width=(heartsFound/7)*100+"%";
-
-message.innerHTML="❤️ Secret Memory Found! ("+heartsFound+"/7)";
-
-if(heartsFound===7){
-
-finishHeartGame();
-
-}
-
-};
-
-gameArea.appendChild(heart);
-
-}
-
-// Fake disappearing heart
-
-setTimeout(function(){
-
-let fake=document.createElement("div");
-
-fake.className="heart";
-
-fake.innerHTML="💖";
-
-fake.style.left="60%";
-
-fake.style.top="30%";
-
-fake.onclick=function(){
-
-message.innerHTML="😂 Oops! That one was fake!";
-
-fake.remove();
-
-};
-
-gameArea.appendChild(fake);
-
-setTimeout(function(){
-
-if(fake.parentNode){
-
-fake.remove();
-
-}
-
-},4000);
 
 },12000);
 
-// Finish
-
-function finishHeartGame(){
-
-message.innerHTML="🎉 You found every hidden memory!";
-
-let yay=document.getElementById("yay");
-
-yay.style.display="block";
-
-setTimeout(function(){
-
-message.innerHTML="❤️ Relationship Quiz unlocked...";
-
-},2500);
-
-}
-// ===============================
-// MOON + SHOOTING STAR
-// ===============================
-
-// Create Moon
-
-const moon=document.createElement("div");
-
-moon.innerHTML="🌙";
-
-moon.style.position="absolute";
-moon.style.top="20px";
-moon.style.right="30px";
-moon.style.fontSize="55px";
-moon.style.cursor="pointer";
-
-gameArea.appendChild(moon);
-
-// Moon click
-
-moon.onclick=function(e){
-
-e.stopPropagation();
-
-message.innerHTML="🌙 Something sparkles behind the moon...";
-
-if(heartsFound===6){
-
-spawnHeart(
-moon.offsetLeft+15,
-moon.offsetTop+20
-);
-
 }
 
-};
+setInterval(createFloatingHeart,700);
 
-// Shooting Star
+</script>
 
-const shooting=document.createElement("div");
+</body>
 
-shooting.innerHTML="⭐";
-
-shooting.style.position="absolute";
-shooting.style.left="-60px";
-shooting.style.top="70px";
-shooting.style.fontSize="28px";
-
-gameArea.appendChild(shooting);
-
-function shootingStar(){
-
-shooting.style.left="-60px";
-
-let x=-60;
-
-const fly=setInterval(function(){
-
-x+=8;
-
-shooting.style.left=x+"px";
-
-if(x>800){
-
-clearInterval(fly);
-
-}
-
-},20);
-
-}
-
-setInterval(shootingStar,9000);
-
-// Secret heart after many wrong clicks
-
-setInterval(function(){
-
-if(wrongClicks>=10 && heartsFound<7){
-
-spawnHeart(220,120);
-
-wrongClicks=0;
-
-message.innerHTML="✨ A hidden memory appeared!";
-
-}
-
-},1000);
-// ===============================
-// RELATIONSHIP QUIZ
-// ===============================
-
-const quiz=[
-
-{
-q:"What's my favourite person? ❤️",
-a:["My Mom","You 😌","My Friend","Pizza"],
-correct:1
-},
-
-{
-q:"If I'm sad, what should you do?",
-a:["Ignore me 😭","Send memes 😂","Talk to me ❤️","Steal my food"],
-correct:2
-},
-
-{
-q:"Who's the cutest?",
-a:["Me 😌","You ❤️","The Cat 🐱","The Dog 🐶"],
-correct:1
-},
-
-{
-q:"What's stronger than WiFi?",
-a:["Love ❤️","Bluetooth","5G","Nothing"],
-correct:0
-},
-
-{
-q:"Mission Complete?",
-a:["Not Yet","Almost","YESSS!! ❤️","Never"],
-correct:2
-}
-
-];
-
-let quizIndex=0;
-
-function startQuiz(){
-
-gameArea.innerHTML="";
-
-showQuestion();
-
-}
-
-function showQuestion(){
-
-if(quizIndex>=quiz.length){
-
-quizFinished();
-
-return;
-
-}
-
-const data=quiz[quizIndex];
-
-gameArea.innerHTML="";
-
-const title=document.createElement("h2");
-
-title.innerHTML=data.q;
-
-title.style.marginTop="20px";
-
-gameArea.appendChild(title);
-
-data.a.forEach((answer,index)=>{
-
-const btn=document.createElement("button");
-
-btn.innerHTML=answer;
-
-btn.style.display="block";
-
-btn.style.margin="15px auto";
-
-btn.onclick=function(){
-
-if(index===data.correct){
-
-message.innerHTML="✅ Correct!";
-
-quizIndex++;
-
-setTimeout(showQuestion,700);
-
-}else{
-
-message.innerHTML="😂 Nope! Try again.";
-
-}
-
-};
-
-gameArea.appendChild(btn);
-
-});
-
-}
-
-function quizFinished(){
-
-gameArea.innerHTML="";
-
-message.innerHTML="🎉 Relationship Verification Passed!";
-
-const btn=document.createElement("button");
-
-btn.innerHTML="Continue ❤️";
-
-btn.onclick=function(){
-
-window.location.href="gift.html";
-
-};
-
-gameArea.appendChild(btn);
-
-}
-  // ===============================
-// FINAL EFFECTS
-// ===============================
-
-// Achievement popup
-
-function achievement(text){
-
-const pop=document.createElement("div");
-
-pop.innerHTML="🏆 "+text;
-
-pop.style.position="fixed";
-pop.style.top="30px";
-pop.style.left="50%";
-pop.style.transform="translateX(-50%)";
-
-pop.style.background="#ff4d8d";
-pop.style.color="white";
-pop.style.padding="15px 25px";
-pop.style.borderRadius="40px";
-pop.style.fontSize="20px";
-pop.style.boxShadow="0 0 25px pink";
-pop.style.zIndex="9999";
-
-document.body.appendChild(pop);
-
-setTimeout(function(){
-
-pop.remove();
-
-},2200);
-
-}
-
-// Simple confetti
-
-function confetti(){
-
-for(let i=0;i<60;i++){
-
-let c=document.createElement("div");
-
-c.innerHTML="🎉";
-
-c.style.position="fixed";
-
-c.style.left=Math.random()*100+"vw";
-
-c.style.top="-40px";
-
-c.style.fontSize=(18+Math.random()*18)+"px";
-
-c.style.transition="4s linear";
-
-document.body.appendChild(c);
-
-setTimeout(function(){
-
-c.style.top="110vh";
-c.style.transform="rotate(720deg)";
-
-},30);
-
-setTimeout(function(){
-
-c.remove();
-
-},4500);
-
-}
-
-}
-
-// Small screen shake
-
-function shake(){
-
-document.body.animate([
-
-{transform:"translateX(0px)"},
-{transform:"translateX(-6px)"},
-{transform:"translateX(6px)"},
-{transform:"translateX(-6px)"},
-{transform:"translateX(0px)"}
-
-],{
-
-duration:350
-
-});
-
-}
-
-// Upgrade quiz ending
-
-const oldQuizFinished = quizFinished;
-
-quizFinished = function(){
-
-confetti();
-
-shake();
-
-achievement("Relationship Master ❤️");
-
-document.getElementById("yay").style.display="block";
-
-setTimeout(function(){
-
-oldQuizFinished();
-
-},1800);
-
-};
-<script>
-  
+</html>
