@@ -457,7 +457,122 @@ heart.remove();
 }
 
 setInterval(createFloatingHeart,700);
+// =======================================
+// PART 2A - HEART HUNT SYSTEM
+// =======================================
 
+const startBtn = document.getElementById("startBtn");
+const gameArea = document.getElementById("gameArea");
+const message = document.getElementById("message");
+const progressFill = document.getElementById("progressFill");
+
+let heartsFound = 0;
+
+const funnyMessages = [
+
+"😂 Nope... that's not a heart!",
+
+"🙄 Wrong place detective.",
+
+"💀 The heart isn't hiding THERE.",
+
+"🤣 Nice try!",
+
+"💕 You're getting warmer...",
+
+"🎀 Keep looking!",
+
+"✨ Almost..."
+
+];
+
+const heartLocations=[
+
+{top:"20%",left:"18%"},
+
+{top:"35%",left:"75%"},
+
+{top:"68%",left:"32%"},
+
+{top:"60%",left:"82%"},
+
+{top:"82%",left:"56%"},
+
+{top:"44%",left:"12%"},
+
+{top:"12%",left:"56%"}
+
+];
+
+startBtn.onclick=function(){
+
+this.style.display="none";
+
+message.innerHTML="❤️ Find all 7 hidden hearts!";
+
+spawnHearts();
+
+};
+
+function spawnHearts(){
+
+heartLocations.forEach((pos,index)=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.position="absolute";
+
+heart.style.top=pos.top;
+
+heart.style.left=pos.left;
+
+heart.style.fontSize="34px";
+
+heart.style.cursor="pointer";
+
+heart.style.zIndex="50";
+
+heart.onclick=function(){
+
+this.remove();
+
+heartsFound++;
+
+progressFill.style.width=(heartsFound/7)*100+"%";
+
+message.innerHTML="❤️ Hearts Found: "+heartsFound+"/7";
+
+if(heartsFound==7){
+
+setTimeout(()=>{
+
+message.innerHTML="🎉 Mission Complete!";
+
+},800);
+
+}
+
+};
+
+gameArea.appendChild(heart);
+
+});
+
+}
+
+document.body.addEventListener("click",function(e){
+
+if(e.target.className!="heart" && e.target.id!="startBtn"){
+
+message.innerHTML=funnyMessages[Math.floor(Math.random()*funnyMessages.length)];
+
+}
+
+});
 </script>
 
 </body>
