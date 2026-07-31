@@ -398,10 +398,10 @@ Begin Mission ❤️
 
 <div id="message">
 Press Begin Mission ❤️
+<div id="helper">
+🐱
+<div id="speech">Hi! 💕</div>
 </div>
-
-</div>
-
 </div>
 
 <script>
@@ -573,6 +573,39 @@ message.innerHTML=funnyMessages[Math.floor(Math.random()*funnyMessages.length)];
 }
 
 });
+ /* ===== Helper Character ===== */
+
+#helper{
+position:absolute;
+width:70px;
+height:70px;
+left:20px;
+bottom:20px;
+font-size:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:all 1s ease;
+user-select:none;
+z-index:120;
+filter:drop-shadow(0 0 10px hotpink);
+}
+
+#speech{
+position:absolute;
+bottom:95px;
+left:-10px;
+background:white;
+color:#ff4d88;
+padding:8px 12px;
+border-radius:15px;
+font-size:14px;
+font-weight:bold;
+display:none;
+white-space:nowrap;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
 </script>
 
 </body>
