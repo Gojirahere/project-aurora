@@ -4,21 +4,33 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Girlfriend's Day ❤️</title>
+<title>Happy Girlfriend's Day ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
- /* ===========================
-   RESET
-=========================== */
+
+/* =========================
+RESET
+========================= */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+}
+
+html{
+
+scroll-behavior:smooth;
+
 }
 
 body{
@@ -29,7 +41,8 @@ height:100vh;
 
 overflow:hidden;
 
-background:linear-gradient(180deg,#050816,#09122b,#140b26);
+background:
+radial-gradient(circle at top,#1c2255,#0c1028,#050816);
 
 display:flex;
 
@@ -41,77 +54,29 @@ color:white;
 
 }
 
-/* ===========================
-   STARS
-=========================== */
+/* =========================
+BACKGROUND
+========================= */
 
 #stars{
 
 position:fixed;
 
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
+inset:0;
 
 overflow:hidden;
+
+pointer-events:none;
 
 z-index:0;
 
 }
 
-.star{
-
-position:absolute;
-
-width:3px;
-
-height:3px;
-
-background:white;
-
-border-radius:50%;
-
-animation:twinkle 3s infinite;
-
-box-shadow:0 0 10px white;
-
-}
-
-@keyframes twinkle{
-
-0%,100%{
-
-opacity:.2;
-
-transform:scale(.8);
-
-}
-
-50%{
-
-opacity:1;
-
-transform:scale(1.8);
-
-}
-
-}
-
-/* ===========================
-   FLOATING HEARTS
-=========================== */
-
-#floatingHearts{
+#shootingStars{
 
 position:fixed;
 
-width:100%;
-
-height:100%;
+inset:0;
 
 overflow:hidden;
 
@@ -121,11 +86,245 @@ z-index:1;
 
 }
 
+#floatingHearts{
+
+position:fixed;
+
+inset:0;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:2;
+
+}
+
+/* =========================
+MAIN CARD
+========================= */
+
+.container{
+
+position:relative;
+
+z-index:10;
+
+width:92%;
+
+max-width:760px;
+
+padding:45px;
+
+border-radius:35px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:
+0 0 60px rgba(255,105,180,.15);
+
+text-align:center;
+
+}
+
+h1{
+
+font-family:'Pacifico',cursive;
+
+font-size:3.2rem;
+
+color:#ff8dc7;
+
+margin-bottom:15px;
+
+}
+
+.subtitle{
+
+font-size:1.2rem;
+
+opacity:.9;
+
+margin-bottom:30px;
+
+}
+
+button{
+
+padding:18px 45px;
+
+border:none;
+
+border-radius:60px;
+
+font-family:'Fredoka',sans-serif;
+
+font-size:20px;
+
+cursor:pointer;
+
+background:linear-gradient(90deg,#ff4d94,#ff87c8);
+
+color:white;
+
+transition:.35s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+#gameArea{
+
+margin-top:35px;
+
+position:relative;
+
+width:100%;
+
+height:420px;
+
+border-radius:25px;
+
+overflow:hidden;
+
+display:none;
+
+background:rgba(255,255,255,.05);
+
+}
+
+#progress{
+
+width:100%;
+
+height:14px;
+
+background:#2d2d44;
+
+border-radius:50px;
+
+overflow:hidden;
+
+margin-bottom:18px;
+
+}
+
+#progressFill{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#ff5ca8,#ffc1de);
+
+transition:.4s;
+
+}
+
+#message{
+
+font-size:22px;
+
+margin-top:18px;
+
+min-height:35px;
+
+}
+
+/* Continue in Part 1B... */
+/* =========================
+STARS
+========================= */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+box-shadow:0 0 10px white;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+
+0%,100%{
+opacity:.25;
+transform:scale(.7);
+}
+
+50%{
+opacity:1;
+transform:scale(1.8);
+}
+
+}
+
+/* =========================
+SHOOTING STARS
+========================= */
+
+.shootingStar{
+
+position:absolute;
+
+width:140px;
+
+height:2px;
+
+background:linear-gradient(90deg,#fff,transparent);
+
+transform:rotate(-35deg);
+
+animation:shoot 4s linear infinite;
+
+opacity:.9;
+
+}
+
+@keyframes shoot{
+
+0%{
+
+transform:translate(-250px,-150px) rotate(-35deg);
+
+opacity:0;
+
+}
+
+10%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translate(1700px,900px) rotate(-35deg);
+
+opacity:0;
+
+}
+
+}
+
+/* =========================
+FLOATING HEARTS
+========================= */
+
 .floatHeart{
 
 position:absolute;
 
-font-size:22px;
+font-size:20px;
 
 animation:floatHeart linear infinite;
 
@@ -137,7 +336,7 @@ opacity:.8;
 
 0%{
 
-transform:translateY(110vh) scale(.7);
+transform:translateY(120vh) scale(.6);
 
 opacity:0;
 
@@ -159,17 +358,17 @@ opacity:0;
 
 }
 
-/* ===========================
-   MOON
-=========================== */
+/* =========================
+MOON
+========================= */
 
 .moon{
 
-position:absolute;
+position:fixed;
 
-top:50px;
+top:45px;
 
-right:70px;
+right:60px;
 
 width:90px;
 
@@ -177,15 +376,12 @@ height:90px;
 
 border-radius:50%;
 
-background:#fff7d6;
+background:#fff8cf;
 
 box-shadow:
-
 0 0 20px white,
-
-0 0 50px #fff9b0,
-
-0 0 90px white;
+0 0 60px #fff5aa,
+0 0 100px white;
 
 animation:moonGlow 4s infinite;
 
@@ -209,49 +405,17 @@ transform:scale(1.08);
 
 }
 
-/* ===========================
-   MAIN CONTAINER
-=========================== */
-
-.container{
-
-position:relative;
-
-z-index:5;
-
-text-align:center;
-
-width:90%;
-
-max-width:700px;
-
-padding:40px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.12);
-
-box-shadow:0 0 40px rgba(255,255,255,.08);
-
-}
+/* =========================
+TITLE
+========================= */
 
 h1{
 
-font-size:3rem;
-
-color:#ff8ac6;
+animation:titleFloat 3s ease-in-out infinite;
 
 text-shadow:
-
-0 0 10px #ff8ac6,
-
-0 0 25px hotpink;
-
-animation:titleFloat 3s infinite;
+0 0 10px hotpink,
+0 0 25px deeppink;
 
 }
 
@@ -273,106 +437,180 @@ transform:translateY(-8px);
 
 .subtitle{
 
-margin-top:15px;
+color:#f4ddee;
 
-font-size:1.2rem;
-
-color:#ddd;
+line-height:1.6;
 
 }
 
-/* ===========================
-   BUTTON
-=========================== */
+/* =========================
+BUTTON
+========================= */
 
-#startBtn{
+button:hover{
 
-margin-top:35px;
+box-shadow:
+0 0 25px hotpink,
+0 0 45px deeppink;
 
-padding:16px 40px;
+}
 
-font-size:20px;
+/* Continue in Part 1C... */
+ /* =========================
+CHERRY BLOSSOMS
+========================= */
 
-font-family:'Fredoka',sans-serif;
+.petal{
 
-border:none;
+position:absolute;
 
-border-radius:50px;
+font-size:18px;
 
-background:linear-gradient(90deg,#ff4f95,#ff79c6);
+opacity:.8;
 
-color:white;
+animation:petalFall linear infinite;
+
+}
+
+@keyframes petalFall{
+
+0%{
+
+transform:translateY(-120px) rotate(0deg);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* =========================
+HELPER
+========================= */
+
+#helper{
+
+position:absolute;
+
+width:75px;
+
+height:75px;
+
+bottom:20px;
+
+left:20px;
+
+z-index:50;
 
 cursor:pointer;
 
-transition:.3s;
+transition:1s;
 
-box-shadow:0 0 25px hotpink;
-
-}
-
-#startBtn:hover{
-
-transform:scale(1.08);
-
-box-shadow:0 0 45px hotpink;
+display:none;
 
 }
 
-/* ===========================
-   GAME AREA
-=========================== */
-
-#gameArea{
-
-margin-top:35px;
-
-}
-
-#progress{
+#helper img{
 
 width:100%;
 
-height:16px;
-
-background:#333;
-
-border-radius:20px;
-
-overflow:hidden;
-
-margin-bottom:20px;
-
-}
-
-#progressFill{
-
-width:0%;
-
 height:100%;
 
-background:linear-gradient(90deg,#ff5ca8,#ffb3d9);
-
-transition:.5s;
+object-fit:contain;
 
 }
 
-#message{
+#speech{
 
-font-size:22px;
+position:absolute;
 
-color:#fff;
+bottom:85px;
 
-min-height:50px;
+left:-15px;
+
+background:white;
+
+color:#ff4d94;
+
+padding:8px 14px;
+
+border-radius:15px;
+
+font-size:14px;
+
+font-weight:bold;
+
+display:none;
+
+white-space:nowrap;
+
+box-shadow:0 5px 15px rgba(0,0,0,.25);
 
 }
- </style>
 
- </head>
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+.container{
+
+padding:25px;
+
+}
+
+h1{
+
+font-size:2.3rem;
+
+}
+
+.subtitle{
+
+font-size:1rem;
+
+}
+
+button{
+
+font-size:18px;
+
+padding:15px 35px;
+
+}
+
+#gameArea{
+
+height:360px;
+
+}
+
+}
+
+</style>
+
+</head>
 
 <body>
 
 <div id="stars"></div>
+
+<div id="shootingStars"></div>
 
 <div id="floatingHearts"></div>
 
@@ -390,224 +628,30 @@ I made a tiny adventure just for you...
 Begin Mission ❤️
 </button>
 
-<div id="gameArea">
-
 <div id="progress">
+
 <div id="progressFill"></div>
+
 </div>
 
 <div id="message">
 Press Begin Mission ❤️
-<div id="helper">
-🐱
-<div id="speech">Hi! 💕</div>
 </div>
+
+<div id="gameArea">
+
+<div id="helper">
+
+<img id="kittyImg" src="kitty.png" alt="Helper">
+
+<div id="speech">
+Hi! 💕
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <script>
-
-// ===== CREATE STARS =====
-
-const stars=document.getElementById("stars");
-
-for(let i=0;i<220;i++){
-
-let star=document.createElement("div");
-
-star.className="star";
-
-star.style.left=Math.random()*100+"vw";
-
-star.style.top=Math.random()*100+"vh";
-
-star.style.animationDelay=Math.random()*3+"s";
-
-star.style.animationDuration=(2+Math.random()*3)+"s";
-
-stars.appendChild(star);
-
-}
-
-// ===== FLOATING HEARTS =====
-
-const floating=document.getElementById("floatingHearts");
-
-function createFloatingHeart(){
-
-let heart=document.createElement("div");
-
-heart.className="floatHeart";
-
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.animationDuration=(6+Math.random()*6)+"s";
-
-heart.style.fontSize=(18+Math.random()*22)+"px";
-
-floating.appendChild(heart);
-
-setTimeout(()=>{
-
-heart.remove();
-
-},12000);
-
-}
-
-setInterval(createFloatingHeart,700);
-// =======================================
-// PART 2A - HEART HUNT SYSTEM
-// =======================================
-
-const startBtn = document.getElementById("startBtn");
-const gameArea = document.getElementById("gameArea");
-const message = document.getElementById("message");
-const progressFill = document.getElementById("progressFill");
-
-let heartsFound = 0;
-
-const funnyMessages = [
-
-"😂 Nope... that's not a heart!",
-
-"🙄 Wrong place detective.",
-
-"💀 The heart isn't hiding THERE.",
-
-"🤣 Nice try!",
-
-"💕 You're getting warmer...",
-
-"🎀 Keep looking!",
-
-"✨ Almost..."
-
-];
-
-const heartLocations=[
-
-{top:"20%",left:"18%"},
-
-{top:"35%",left:"75%"},
-
-{top:"68%",left:"32%"},
-
-{top:"60%",left:"82%"},
-
-{top:"82%",left:"56%"},
-
-{top:"44%",left:"12%"},
-
-{top:"12%",left:"56%"}
-
-];
-
-startBtn.onclick=function(){
-
-this.style.display="none";
-
-message.innerHTML="❤️ Find all 7 hidden hearts!";
-
-spawnHearts();
-
-};
-
-function spawnHearts(){
-
-heartLocations.forEach((pos,index)=>{
-
-let heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="❤️";
-
-heart.style.position="absolute";
-
-heart.style.top=pos.top;
-
-heart.style.left=pos.left;
-
-heart.style.fontSize="34px";
-
-heart.style.cursor="pointer";
-
-heart.style.zIndex="50";
-
-heart.onclick=function(){
-
-this.remove();
-
-heartsFound++;
-
-progressFill.style.width=(heartsFound/7)*100+"%";
-
-message.innerHTML="❤️ Hearts Found: "+heartsFound+"/7";
-
-if(heartsFound==7){
-
-setTimeout(()=>{
-
-message.innerHTML="🎉 Mission Complete!";
-
-},800);
-
-}
-
-};
-
-gameArea.appendChild(heart);
-
-});
-
-}
-
-document.body.addEventListener("click",function(e){
-
-if(e.target.className!="heart" && e.target.id!="startBtn"){
-
-message.innerHTML=funnyMessages[Math.floor(Math.random()*funnyMessages.length)];
-
-}
-
-});
- /* ===== Helper Character ===== */
-
-#helper{
-position:absolute;
-width:70px;
-height:70px;
-left:20px;
-bottom:20px;
-font-size:60px;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-transition:all 1s ease;
-user-select:none;
-z-index:120;
-filter:drop-shadow(0 0 10px hotpink);
-}
-
-#speech{
-position:absolute;
-bottom:95px;
-left:-10px;
-background:white;
-color:#ff4d88;
-padding:8px 12px;
-border-radius:15px;
-font-size:14px;
-font-weight:bold;
-display:none;
-white-space:nowrap;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-</script>
-
-</body>
-
-</html>
