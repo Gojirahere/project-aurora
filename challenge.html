@@ -763,3 +763,46 @@ gameArea.style.display="block";
 message.innerHTML="💕 Find all 7 hidden hearts!";
 
 });
+// ===== HEART LOCATIONS =====
+
+let heartsFound = 0;
+
+const heartLocations = [
+  { top: "18%", left: "18%" },
+  { top: "25%", left: "75%" },
+  { top: "52%", left: "30%" },
+  { top: "65%", left: "80%" },
+  { top: "75%", left: "18%" },
+  { top: "42%", left: "58%" },
+  { top: "12%", left: "50%" }
+];
+
+function spawnHearts(){
+
+    gameArea.innerHTML="";
+
+    heartLocations.forEach((pos)=>{
+
+        const heart=document.createElement("div");
+
+        heart.className="heart";
+
+        heart.innerHTML="❤️";
+
+        heart.style.position="absolute";
+
+        heart.style.top=pos.top;
+
+        heart.style.left=pos.left;
+
+        heart.style.fontSize="34px";
+
+        heart.style.cursor="pointer";
+
+        heart.style.zIndex="50";
+
+        gameArea.appendChild(heart);
+
+    });
+
+}
